@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 public class ls {
     public static void main(String[] args) {
-        // Función principal: gestiona los argumentos y llama a la función correspondiente
         if (args.length != 2) {
             System.out.println("Número de argumentos incorrecto.\n\nSintáxis: \n\t java ls [ lista | columnas | tabla ] ruta de la carpeta");
             System.exit(0);
