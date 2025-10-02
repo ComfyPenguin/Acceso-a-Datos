@@ -54,7 +54,7 @@ public class headTails {
 
     private static void mostrarHead(String rutaArchivo, int numLineas){
         try {
-            BufferedReader archivo = new BufferedReader(new FileReader(ruta));
+            BufferedReader archivo = new BufferedReader(new FileReader(rutaArchivo));
             String linea;
 
             for (int i = 0; i < numLineas; i++) {
@@ -76,24 +76,22 @@ public class headTails {
     }
 
     private static void mostrarTails(String rutaArchivo, int numLineas){
-        // TODO
-
-        // Debera añadir x lineas si ya estan esas lineas pero todavia quedan lineas por leer quita la primera y añade una nueva hasta que llegue al final
         try {
             BufferedReader archivo = new BufferedReader(new FileReader(rutaArchivo));
             ArrayList<String> lineas = new ArrayList<>();
             String linea;
 
-            while (numLineas != lineas.size()) {
+            do {
                 linea = archivo.readLine();
-                lineas.add(linea);
+                if (linea != null) lineas.add(linea);
+                if(lineas.size() > numLineas) lineas.removeFirst();
+            } while (linea != null);
 
-                if(lineas.size() == numLineas && linea != null){
-                    
-                }
-                 
+            for (int i = 0; i < lineas.size(); i++) {
+                System.out.println((i+1) + ". " + lineas.get(i));
             }
 
+            archivo.close();
         } catch (Exception e) {
             System.out.println("Error al leer el archivo");
             e.printStackTrace();
